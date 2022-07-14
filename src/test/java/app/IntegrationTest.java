@@ -5,6 +5,7 @@ import io.jooby.StatusCode;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ public class IntegrationTest {
   static OkHttpClient client = new OkHttpClient();
 
   @Test
+  @Disabled
   public void shouldSayHi(int serverPort) throws IOException {
     Request req = new Request.Builder()
         .url("http://localhost:" + serverPort)
