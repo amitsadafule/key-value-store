@@ -21,7 +21,7 @@ public class WAL {
     return INSTANCE;
   }
 
-  public void append(Entry entry) throws IOException {
+  public synchronized void append(Entry entry) throws IOException {
     int keySize = entry.getKey().getBytes().length;
     int valueSize = entry.getValue().getBytes().length;
     outputStream.write(ByteBuffer.allocate(Integer.BYTES).putInt(keySize).array());

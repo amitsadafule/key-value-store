@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
 public final class Cache {
@@ -19,7 +20,7 @@ public final class Cache {
   private Cache() {
     try {
       wal = WAL.getInstance(WAL_FILE_LOCATION);
-      memTable = new HashMap<>();
+      memTable = new ConcurrentHashMap<>();
       populateMemTable();
     } catch (IOException e) {
       log.error("Error while opening wal file", e);
